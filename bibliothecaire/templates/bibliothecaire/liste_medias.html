@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des Médias</title>
+</head>
+<body>
+    <h1>Liste des Médias</h1>
+    <ul>
+        {% for media in medias %}
+            <li>{{ media.type_media }} - {{ media.name }}{% if not media.disponible %} (Non disponible){% endif %}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'ajouter_media' %}">Ajouter un média</a>
+</body>
+</html>
