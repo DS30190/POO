@@ -3,6 +3,12 @@ from django.contrib import messages
 from .models import Media, Emprunteur, Emprunt
 from .forms import EmprunteurForm, MediaForm, EmpruntForm
 
+def index(request):
+    return render(request, 'bibliothecaire/index.html')
+
+def redirection_bibliothecaire(request):
+    return redirect('index', permanent=True)
+
 # Liste des médias
 def liste_medias(request):
     livres = Media.objects.filter(type_media='Livre')

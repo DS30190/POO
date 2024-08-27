@@ -2,6 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path('', views.redirection_bibliothecaire, name='redirection_bibliothecaire'),
+    path('index/', views.index, name='index'),
     path('emprunteurs/', views.liste_emprunteurs, name='liste_emprunteurs'),
     path('emprunteurs/creer/', views.creer_emprunteur, name='creer_emprunteur'),
     path('emprunteurs/<int:pk>/mettre-a-jour/', views.mettre_a_jour_emprunteur, name='mettre_a_jour_emprunteur'),

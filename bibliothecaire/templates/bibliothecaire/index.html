@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bibliothécaire</title>
+</head>
+<body>
+    <h1>Bienvenue sur la page Bibliothécaire</h1>
+    <ul>
+        {% for media in medias %}
+            <li>{{ media.name }} - {{ media.type_media }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
