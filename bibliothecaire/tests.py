@@ -1,8 +1,9 @@
 from django.test import TestCase
 from .models import Media, Emprunteur
 
-
 class MediaModelTests(TestCase):
+    fixtures = ['initial_data.json']  # Spécifie le fichier de fixture à utiliser
+
     def test_creation_livre(self):
         livre = Media.objects.create(type_media="Livre", name="1984")
         self.assertEqual(livre.name, "1984")
@@ -15,8 +16,9 @@ class MediaModelTests(TestCase):
         self.assertEqual(dvd.type_media, "DVD")
         self.assertTrue(dvd.disponible)
 
-
 class EmprunteurModelTests(TestCase):
+    fixtures = ['initial_data.json']  # Spécifie le fichier de fixture à utiliser
+
     def test_creation_emprunteur(self):
         emprunteur = Emprunteur.objects.create(name="John Doe")
         self.assertEqual(emprunteur.name, "John Doe")
@@ -29,6 +31,7 @@ class EmprunteurModelTests(TestCase):
 
         # Vérifie que l'emprunteur a bien emprunté le livre
         self.assertIn(livre, emprunteur.emprunts.all())
+
 
 
 

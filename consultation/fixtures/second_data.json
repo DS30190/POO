@@ -1,0 +1,29 @@
+[
+    {
+        "model": "bibliothecaire.media",
+        "pk": 1,
+        "fields": {
+            "type_media": "Livre",
+            "name": "Python Basics",
+            "date_emprunt": null,
+            "disponible": true
+        }
+    },
+    {
+        "model": "bibliothecaire.emprunteur",
+        "pk": 1,
+        "fields": {
+            "name": "John Doe",
+            "bloque": false
+        }
+    },
+    {
+        "model": "consultation.consultation",
+        "pk": 1,
+        "fields": {
+            "emprunteur": 1,
+            "media_consulte": 1,
+            "date_consultation": "2024-08-27"
+        }
+    }
+]
