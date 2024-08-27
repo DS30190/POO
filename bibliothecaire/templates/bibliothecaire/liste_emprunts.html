@@ -7,9 +7,13 @@
     <h1>Liste des Emprunts</h1>
     <ul>
         {% for emprunt in emprunts %}
-            <li>{{ emprunt.emprunteur.name }} a emprunté {{ emprunt.media.name }} le {{ emprunt.date_emprunt }}{% if emprunt.date_retour %} (Rendu le {{ emprunt.date_retour }}){% else %} <a href="{% url 'retourner_emprunt' emprunt.pk %}">Retourner</a>{% endif %}</li>
+            <li>{{ emprunt.emprunteur.name }} a emprunté {{ emprunt.media.name }} le {{ emprunt.date_emprunt }}
+                {% if emprunt.date_retour %} (retourné le {{ emprunt.date_retour }}) {% else %}
+                <a href="{% url 'retourner_emprunt' emprunt.pk %}">Retourner</a> {% endif %}
+            </li>
         {% endfor %}
     </ul>
     <a href="{% url 'creer_emprunt' %}">Créer un nouvel emprunt</a>
 </body>
 </html>
+

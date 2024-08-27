@@ -6,10 +6,24 @@
 <body>
     <h1>Liste des Médias</h1>
     <ul>
-        {% for media in medias %}
-            <li>{{ media.type_media }} - {{ media.name }}{% if not media.disponible %} (Non disponible){% endif %}</li>
+        <h2>Livres</h2>
+        {% for livre in livres %}
+            <li>{{ livre.name }} - {{ livre.type_media }}</li>
+        {% endfor %}
+        <h2>DVDs</h2>
+        {% for dvd in dvds %}
+            <li>{{ dvd.name }} - {{ dvd.type_media }}</li>
+        {% endfor %}
+        <h2>CDs</h2>
+        {% for cd in cds %}
+            <li>{{ cd.name }} - {{ cd.type_media }}</li>
+        {% endfor %}
+        <h2>Jeux de Plateau</h2>
+        {% for jeu in jeux_de_plateau %}
+            <li>{{ jeu.name }} - {{ jeu.type_media }}</li>
         {% endfor %}
     </ul>
-    <a href="{% url 'ajouter_media' %}">Ajouter un média</a>
+    <a href="{% url 'ajouter_media' %}">Ajouter un nouveau média</a>
 </body>
 </html>
+
