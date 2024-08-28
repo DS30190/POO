@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Media, Emprunteur, Emprunt
 from .forms import EmprunteurForm, MediaForm, EmpruntForm
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     return render(request, 'bibliothecaire/index.html')
@@ -112,3 +113,8 @@ def retourner_emprunt(request, pk):
 def liste_medias_disponibles(request):
     medias = Media.objects.filter(disponible=True)
     return render(request, 'consultation/liste_medias_disponibles.html', {'medias': medias})
+
+@login_required
+def liste_emprunteurs(request):
+    # Logique ici
+    pass
