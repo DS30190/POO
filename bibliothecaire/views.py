@@ -3,14 +3,15 @@ from django.contrib import messages
 from .models import Media, Emprunteur, Emprunt
 from .forms import EmprunteurForm, MediaForm, EmpruntForm
 from django.contrib.auth.decorators import login_required
+from datetime import date
 
 def index(request):
     return render(request, 'bibliothecaire/index.html')
 
 def redirection_bibliothecaire(request):
-    return redirect('index', permanent=True)
+    return redirect('index', permanent=True)  # Redirige vers 'bibliothecaire/index/'
 
-
+@login_required
 def liste_medias(request):
     livres = Media.objects.filter(type_media='Livre')
     dvds = Media.objects.filter(type_media='DVD')
@@ -23,12 +24,12 @@ def liste_medias(request):
         'jeux_de_plateau': jeux_de_plateau
     })
 
-
+@login_required
 def liste_emprunteurs(request):
     emprunteurs = Emprunteur.objects.all()
     return render(request, 'bibliothecaire/liste_emprunteurs.html', {'emprunteurs': emprunteurs})
 
-
+@login_required
 def creer_emprunteur(request):
     if request.method == 'POST':
         form = EmprunteurForm(request.POST)
@@ -42,7 +43,7 @@ def creer_emprunteur(request):
         form = EmprunteurForm()
     return render(request, 'bibliothecaire/creer_emprunteur.html', {'form': form})
 
-
+@login_required
 def mettre_a_jour_emprunteur(request, pk):
     emprunteur = get_object_or_404(Emprunteur, pk=pk)
     if request.method == 'POST':
@@ -57,7 +58,7 @@ def mettre_a_jour_emprunteur(request, pk):
         form = EmprunteurForm(instance=emprunteur)
     return render(request, 'bibliothecaire/mettre_a_jour_emprunteur.html', {'form': form})
 
-
+@login_required
 def ajouter_media(request):
     if request.method == 'POST':
         form = MediaForm(request.POST)
@@ -71,7 +72,7 @@ def ajouter_media(request):
         form = MediaForm()
     return render(request, 'bibliothecaire/ajouter_media.html', {'form': form})
 
-
+@login_required
 def creer_emprunt(request):
     if request.method == 'POST':
         form = EmpruntForm(request.POST)
@@ -92,12 +93,12 @@ def creer_emprunt(request):
         form = EmpruntForm()
     return render(request, 'bibliothecaire/creer_emprunt.html', {'form': form})
 
-
+@login_required
 def liste_emprunts(request):
     emprunts = Emprunt.objects.all()
     return render(request, 'bibliothecaire/liste_emprunts.html', {'emprunts': emprunts})
 
-
+@login_required
 def retourner_emprunt(request, pk):
     emprunt = get_object_or_404(Emprunt, pk=pk)
     if request.method == 'POST':
@@ -108,13 +109,3 @@ def retourner_emprunt(request, pk):
         messages.success(request, 'Emprunt retourné avec succès.')
         return redirect('liste_emprunts')
     return render(request, 'bibliothecaire/retourner_emprunt.html', {'emprunt': emprunt})
-
-
-def liste_medias_disponibles(request):
-    medias = Media.objects.filter(disponible=True)
-    return render(request, 'consultation/liste_medias_disponibles.html', {'medias': medias})
-
-@login_required
-def liste_emprunteurs(request):
-    # Logique ici
-    pass
