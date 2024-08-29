@@ -5,5 +5,10 @@
 </head>
 <body>
     <h1>Bienvenue sur la page de consultation</h1>
+<ul>
+        {% for media in medias %}
+            <li>{{ media.name }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

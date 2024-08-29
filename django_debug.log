@@ -765,3 +765,10 @@ Traceback (most recent call last):
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 django.db.utils.OperationalError: no such table: consultation_media
 Watching for file changes with StatReloader
+C:\Users\saume\Média\Scripts\POO\consultation\models.py changed, reloading.
+C:\Users\saume\Média\Scripts\POO\consultation\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\saume\Média\Scripts\POO\consultation\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader

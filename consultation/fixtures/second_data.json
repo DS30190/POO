@@ -1,29 +1,27 @@
 [
     {
-        "model": "bibliothecaire.media",
+        "model": "consultation.media",
         "pk": 1,
         "fields": {
-            "type_media": "Livre",
-            "name": "Python Basics",
-            "date_emprunt": null,
+            "titre": "Python Basics",
             "disponible": true
         }
     },
     {
-        "model": "bibliothecaire.emprunteur",
-        "pk": 1,
+        "model": "consultation.media",
+        "pk": 2,
         "fields": {
-            "name": "John Doe",
-            "bloque": false
+            "titre": "Advanced Python",
+            "disponible": false
         }
     },
     {
-        "model": "consultation.consultation",
-        "pk": 1,
+        "model": "consultation.media",
+        "pk": 3,
         "fields": {
-            "emprunteur": 1,
-            "media_consulte": 1,
-            "date_consultation": "2024-08-27"
+            "titre": "Python Expert",
+            "disponible": true
         }
     }
 ]
+
