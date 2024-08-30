@@ -1,0 +1,19 @@
+<!-- bibliothecaire/templates/bibliothecaire/update_emprunt.html -->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier Emprunt</title>
+</head>
+<body>
+    <h1>Modifier Emprunt</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enregistrer</button>
+    </form>
+    <a href="{% url 'liste_emprunts' %}">Retour à la liste des emprunts</a>
+</body>
+</html>

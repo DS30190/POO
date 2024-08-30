@@ -5,9 +5,11 @@ from .forms import EmprunteurForm, MediaForm, EmpruntForm
 from django.contrib.auth.decorators import login_required
 from datetime import date
 
+@login_required
 def index(request):
     return render(request, 'bibliothecaire/index.html')
 
+@login_required
 def redirection_bibliothecaire(request):
     return redirect('index', permanent=True)  # Redirige vers 'bibliothecaire/index/'
 
@@ -43,6 +45,7 @@ def creer_emprunteur(request):
         form = EmprunteurForm()
     return render(request, 'bibliothecaire/creer_emprunteur.html', {'form': form})
 
+
 @login_required
 def mettre_a_jour_emprunteur(request, pk):
     emprunteur = get_object_or_404(Emprunteur, pk=pk)
@@ -50,13 +53,10 @@ def mettre_a_jour_emprunteur(request, pk):
         form = EmprunteurForm(request.POST, instance=emprunteur)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Emprunteur mis à jour avec succès.')
-            return redirect('liste_emprunteurs')
-        else:
-            messages.error(request, 'Formulaire invalide.')
+            return redirect('liste_emprunteurs')  # Redirection vers la liste des emprunteurs ou autre
     else:
         form = EmprunteurForm(instance=emprunteur)
-    return render(request, 'bibliothecaire/mettre_a_jour_emprunteur.html', {'form': form})
+    return render(request, 'bibliothecaire/mettre_a_jour_emprunteur.html', {'form': form, 'emprunteur': emprunteur})
 
 @login_required
 def ajouter_media(request):
@@ -108,4 +108,18 @@ def retourner_emprunt(request, pk):
         emprunt.save()
         messages.success(request, 'Emprunt retourné avec succès.')
         return redirect('liste_emprunts')
-    return render(request, 'bibliothecaire/retourner_emprunt.html', {'emprunt': emprunt})
+    return render(request, 'bibliothecaire/update_emprunt.html', {'emprunt': emprunt})
+
+@login_required
+def update_emprunt(request, emprunt_id):
+    emprunt = get_object_or_404(Emprunt, pk=emprunt_id)
+
+    if request.method == 'POST':
+        form = EmpruntForm(request.POST, instance=emprunt)
+        if form.is_valid():
+            form.save()
+            return redirect('emprunt_liste')  # Assurez-vous que cette URL est définie dans vos URL patterns
+    else:
+        form = EmpruntForm(instance=emprunt)
+
+    return render(request, 'bibliothecaire/update_emprunt.html', {'form': form, 'emprunt': emprunt})

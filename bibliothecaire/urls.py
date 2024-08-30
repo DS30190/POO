@@ -21,7 +21,10 @@ urlpatterns = [
     path('liste_emprunteurs/', views.liste_emprunteurs, name='liste_emprunteurs'),
     path('liste_emprunts/', views.liste_emprunts, name='liste_emprunts'),
     path('liste_medias/', views.liste_medias, name='liste_medias'),
+    path('emprunteurs/<int:pk>/mettre-a-jour/', views.mettre_a_jour_emprunteur, name='mettre_a_jour_emprunteur'),
+    path('emprunt/<int:emprunt_id>/update/', views.update_emprunt, name='update_emprunt'),
 ]
+
 
 
 
