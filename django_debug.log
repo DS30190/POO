@@ -965,3 +965,9 @@ Traceback (most recent call last):
   File "C:\Users\saume\Média\Scripts\POO\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
     raise NoReverseMatch(msg)
 django.urls.exceptions.NoReverseMatch: Reverse for 'emprunt_liste' not found. 'emprunt_liste' is not a valid view function or pattern name.
+C:\Users\saume\Média\Scripts\POO\consultation\models.py changed, reloading.
+C:\Users\saume\Média\Scripts\POO\consultation\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\saume\Média\Scripts\POO\consultation\models.py changed, reloading.
+Watching for file changes with StatReloader
